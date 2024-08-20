@@ -1,0 +1,45 @@
+
+{% extends 'admin_base.html' %}
+{% block content %}
+
+<hr>
+<h1 style="text-align: center; color: rgb(26, 27, 30);">Admin Panel</h1>
+<hr>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Company Users</h2>
+      {% for i in main %}
+        {% if i.role == 2 and not i.is_approved %}
+          <div class="card" style="width: 18rem; margin-bottom: 20px;">
+            <div class="card-body">
+              <h5 class="card-title">{{ i.username }}</h5>
+              <!-- Convert role integer to its corresponding string value -->
+              <p class="card-text">Role: {{ i.get_role_display }}</p>
+              <a href="{% url 'ad_com' i.id %}" class="btn btn-primary">Details</a>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+      <br>
+    </div>
+    <div class="col-md-6">
+      <h2>Employee Users</h2>
+      {% for i in main %}
+        {% if i.role == 3 and not i.is_approved %}
+          <div class="card" style="width: 18rem; margin-bottom: 20px;">
+            <div class="card-body">
+              <h5 class="card-title">{{ i.username }}</h5>
+              <!-- Convert role integer to its corresponding string value -->
+              <p class="card-text">Role: {{ i.get_role_display }}</p>
+              <a href="{% url 'ad_emp' i.id %}" class="btn btn-primary">Details</a>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends 'em_base.html' %}
+{% block content %}
+    
+
+    
+
+
+
+<hr>
+<h1 style="text-align: center; color: rgb(26, 27, 30);">Job History</h1>
+<hr>
+<div class="container mx-auto mt-4">
+  <div class="row">
+
+    {% for i in main %}
+
+
+    <div class="col-md-4" style="margin-top: 20px;">
+      <div class="card" style="width: 18rem;  color: black; background-color: rgba(196, 221, 239, 0.589)">
+
+  
+  <div class="card-body">
+    <h5 class="card-title">{{ i.emp }}</h5>
+    <hr>
+        <h6 class="card-subtitle mb-2 text-muted">{{ i.job_det.company }}</h6>
+    <p class="card-text">{{ i.job_det }}</p>
+    {% if i.select == True %}Short listed  {% elif i.select == False %}Rejected{% elif i.view == True %}Waiting for review {% endif %}
+    
+  </div>
+  </div>
+    </div> 
+      
+
+    
+    {% endfor %}
+
+  </div></div> 
+
+{% endblock content %}

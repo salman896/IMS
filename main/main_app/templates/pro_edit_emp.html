@@ -1,0 +1,118 @@
+{% extends 'em_base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Profile</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Create Profile</div>
+                    <div class="card-body">
+                        <form id="profileForm" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="first_name">First Name</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name">
+                            </div>
+                            <div class="form-group">
+                                <label for="last_name">Last Name</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" class="form-control" id="address" name="address">
+                            </div>
+                            <div class="form-group">
+                                <label for="mobile_number">Mobile Number</label>
+                                <input type="text" class="form-control" id="mobile_number" name="mobile_number">
+                            </div>
+                            <div class="form-group">
+                                <label for="date_of_birth">Date of Birth</label>
+                                <input type="date" class="form-control" id="date_of_birth" name="date_of_birth">
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select class="form-control" id="gender" name="gender">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="education-fields">
+                                <label for="education">Education</label>
+                                <div id="educations">
+                                    <input type="text" class="form-control" name="education" placeholder="Education">
+                                </div>
+                                <button type="button" id="addEdu" class="btn btn-sm btn-primary">+</button>
+                                <button type="button" id="removeEdu" class="btn btn-sm btn-danger">-</button>
+                            </div>
+                            <div class="form-group" id="skill-fields">
+                                <label for="skills">Skills</label>
+                                <div id="skill">
+                                    <input type="text" class="form-control" name="skills" placeholder="Skill">
+                                </div>
+                                <button type="button" id="addskill" class="btn btn-sm btn-primary">+</button>
+                                <button type="button" id="removeskill" class="btn btn-sm btn-danger">-</button>
+                            </div>
+                            <div class="form-group">
+                                <label for="image">Profile Picture</label>
+                                <input type="file" class="form-control-file" id="image" name="image">
+                            </div>
+                            <div class="form-group">
+                                <label for="cv">Upload CV</label>
+                                <input type="file" class="form-control-file" id="cv" name="cv">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Create Profile</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        document.getElementById("addEdu").addEventListener("click", function () {
+        var input = document.createElement("input");
+        input.type = "text";
+        input.name = "education";
+        document.getElementById("educations").appendChild(input);
+    });
+
+    document.getElementById("removeEdu").addEventListener("click", function () {
+        var names = document.querySelectorAll("#educations input");
+        if (names.length > 1) {
+            names[names.length - 1].remove();
+        }
+    });
+
+    document.getElementById("addskill").addEventListener("click", function () {
+        var input = document.createElement("input");
+        input.type = "text";
+        input.name = "skills";
+        document.getElementById("skill").appendChild(input);
+    });
+
+    document.getElementById("removeskill").addEventListener("click", function () {
+        var names = document.querySelectorAll("#skill input");
+        if (names.length > 1) {
+            names[names.length - 1].remove();
+        }
+    });
+    </script>
+</body>
+</html>
+
+{% endblock content %}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Seek job</h1>
+
+    {% for i in main %}
+        <table border="1">
+            <tr>
+                <th>First Name</th>
+                <td>{{ i.first_name }}</td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td>{{ i.last_name }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ i.email }}</td>
+            </tr>
+            <tr>
+                <th>Mobile</th>
+                <td>{{ i.mob }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ i.address }}</td>
+            </tr>
+            <tr>
+                <th>Date of Birth</th>
+                <td>{{ i.date_of_birth }}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>{{ i.gender }}</td>
+            </tr>
+            <!-- Display CV if available -->
+            <tr>
+                <th>CV</th>
+                <td>
+                    {% if i.cv %}
+                        <a href="{{ i.cv.url }}" target="_blank">View CV</a>
+                        <br>
+                        <a href="{{ i.cv.url }}" download>Download CV</a>
+                    {% else %}
+                        No CV available
+                    {% endif %}
+                </td>
+            </tr>
+            <!-- Display image if available -->
+            <tr>
+                <th>Photo</th>
+                <td>
+                    {% if i.image %}
+                        <img src="{{ i.image.url }}" alt="Profile Image" style="max-width: 200px;">
+                    {% else %}
+                        No image available
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Education</th>
+                <td>
+                    {% if i.education.edu1 %}
+                        {{ i.education.edu1 }}<br>
+                    {% endif %}
+                    {% if i.education.edu2 %}
+                        {{ i.education.edu2 }}<br>
+                    {% endif %}
+                    {% if i.education.edu3 %}
+                        {{ i.education.edu3 }}<br>
+                    {% endif %}
+                    {% if i.education.edu4 %}
+                        {{ i.education.edu4 }}<br>
+                    {% endif %}
+                    {% if i.education.edu5 %}
+                        {{ i.education.edu5 }}<br>
+                    {% endif %}
+                </td>
+            </tr>
+            <!-- Display skills -->
+            <!-- <tr>
+                <th>Skills</th>
+                <td>
+                    {% if i.skills.skil1 %}
+                        {{ i.skills.skil1 }}<br>
+                    {% endif %}
+                    {% if i.skills.skil2 %}
+                        {{ i.skills.skil2 }}<br>
+                    {% endif %}
+                    {% if i.skills.skil3 %}
+                        {{ i.skills.skil3 }}<br>
+                    {% endif %}
+                    {% if i.skills.skil4 %}
+                        {{ i.skills.skil4 }}<br>
+                    {% endif %}
+                    {% if i.skills.skil5 %}
+                        {{ i.skills.skil5 }}<br>
+                    {% endif %}
+                </td> -->
+            </tr>
+            {% endfor %}
+</body>
+</html>

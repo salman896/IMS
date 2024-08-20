@@ -1,0 +1,49 @@
+{% extends 'com_base.html' %}
+{% block content %}
+
+
+
+<br><br>
+    <h1 style="text-align: center;">Company Profile</h1>
+    <br>
+    <div class="container">
+        <table class="table">
+            <tbody>
+                <div class="col-md-4">
+                    <!-- Profile Image -->
+                    {% if profile.image %}
+                        <img src="{{ profile.image.url }}" alt="Profile Image" class="img-fluid">
+                    {% else %}
+                        <p>No image available</p>
+                    {% endif %}
+                </div>
+                <tr>
+                    <th scope="row">Company</th>
+                    <td>{{ profile.company }}</td>
+                </tr>
+               
+                <tr>
+                    <th scope="row">Email</th>
+                    <td>{{ profile.email }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Mobile</th>
+                    <td>{{ profile.mob }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Address</th>
+                    <td>{{ profile.address }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Details</th>
+                    <td>{{ profile.details }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+{% endblock content %}

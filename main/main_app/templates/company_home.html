@@ -1,0 +1,32 @@
+{% extends 'com_base.html' %}
+{% block content %}
+
+
+   
+
+
+    <hr>
+<h1 style="text-align: center; color: rgb(26, 27, 30);">Seekjob Company </h1>
+<hr>
+<div class="container mx-auto mt-4">
+  <div class="row">
+    {% for i in main %}
+      {% if i.is_active %}
+        <div class="col-md-4" style="margin-top: 20px;">
+          <div class="card" style="width: 18rem;  color: black; background-color: rgba(196, 221, 239, 0.589)">
+            <div class="card-body">
+              <h5 class="card-title">{{ i.job }}</h5>
+              <hr>
+              <h6 class="card-subtitle mb-2 text-muted">{{ i.company }}</h6>
+              <p class="card-text">{{ i.details }}</p>
+              <a href="{% url 'company_det' i.id %}" class="card-link">Details</a>
+            </div>
+          </div>
+        </div> 
+      {% endif %}
+    {% endfor %}
+  </div>
+</div> 
+  
+
+{% endblock content %}

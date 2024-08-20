@@ -1,0 +1,89 @@
+{% extends 'com_base.html' %}
+
+{% block content %}
+<br>
+<div class="container">
+    <h1 class="text-center">Create Job</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="job">Job Title:</label><br>
+            <input type="text" class="form-control" id="job" name="job"><br>
+        </div>
+        
+        <div class="form-group">
+            <label for="details">Job Details:</label><br>
+            <textarea class="form-control" id="details" name="details"></textarea><br>
+        </div>
+        
+        <div class="form-group">
+            <label for="salary">Salary:</label><br>
+            <input type="text" class="form-control" id="salary" name="salary"><br>
+        </div>
+        
+        <div class="form-group">
+            <label for="location">Location:</label><br>
+            <input type="text" class="form-control" id="location" name="location"><br>
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Job Description:</label><br>
+            <textarea class="form-control" id="description" name="description"></textarea><br>
+        </div>
+        
+       
+        <div class="form-group" id="education-fields">
+            <label for="education">Education</label>
+            <div id="educations">
+                <input type="text" class="form-control" name="education" placeholder="Education">
+            </div>
+            <button type="button" id="addEdu" class="btn btn-sm btn-primary">+</button>
+            <button type="button" id="removeEdu" class="btn btn-sm btn-danger">-</button>
+        </div>
+        <div class="form-group" id="skill-fields">
+            <label for="skills">Skills</label>
+            <div id="skill">
+                <input type="text" class="form-control" name="skills" placeholder="Skill">
+            </div>
+            <button type="button" id="addskill" class="btn btn-sm btn-primary">+</button>
+            <button type="button" id="removeskill" class="btn btn-sm btn-danger">-</button>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    document.getElementById("addEdu").addEventListener("click", function () {
+    var input = document.createElement("input");
+    input.type = "text";
+    input.name = "education";
+    document.getElementById("educations").appendChild(input);
+});
+
+document.getElementById("removeEdu").addEventListener("click", function () {
+    var names = document.querySelectorAll("#educations input");
+    if (names.length > 1) {
+        names[names.length - 1].remove();
+    }
+});
+
+document.getElementById("addskill").addEventListener("click", function () {
+    var input = document.createElement("input");
+    input.type = "text";
+    input.name = "skills";
+    document.getElementById("skill").appendChild(input);
+});
+
+document.getElementById("removeskill").addEventListener("click", function () {
+    var names = document.querySelectorAll("#skill input");
+    if (names.length > 1) {
+        names[names.length - 1].remove();
+    }
+});
+</script>
+</body>
+</html>
+
+{% endblock content %}
